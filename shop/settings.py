@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "backend",
-    "cart"  # приложение для управления корзинами покупок
+    "cart",  # приложение для управления корзинами покупок
+    "orders",  # приложение для регистрации заказов клиентов
 ]
 
 MIDDLEWARE = [
