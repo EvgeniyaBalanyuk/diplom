@@ -29,7 +29,7 @@ def product_detail(request, id, slug):  # id и slug чтобы извлекат
                                 id=id,
                                 slug=slug,
                                 available=True)
-    cart_product_form = CartAddProductForm
+    cart_product_form = CartAddProductForm()
     return render(request,
                   'shop/product/detail.html',
                   {'product': product,
