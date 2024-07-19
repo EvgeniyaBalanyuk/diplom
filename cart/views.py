@@ -6,6 +6,8 @@ from .forms import CartAddProductForm
 
 
 '''Представление добавления или обновления товаров в корзине'''
+
+
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
@@ -20,6 +22,8 @@ def cart_add(request, product_id):
 
 
 '''Удаление товаров из корзины'''
+
+
 @require_POST
 def cart_remove(request, product_id):
     cart = Cart(request)
@@ -29,6 +33,12 @@ def cart_remove(request, product_id):
 
 
 '''Отображение корзины и товаров'''
+
+
 def cart_detail(request):
     cart = Cart(request)
+    for item in cart:  # обновление количества товара в корзине
+        item['update_quantity_form'] = CartAddProductForm(initial={
+            'quantity': item['quantity'],
+            'override': True})
     return render(request, 'cart/detail.html', {'cart': cart})
